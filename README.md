@@ -1,4 +1,4 @@
-<html lang="fr">
+ <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Bootstrap (navbar / collapse menu + utilities) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- AOS (animations au scroll) -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <style>
   :root{
     --bg:#0d1017;
@@ -22,6 +26,7 @@
     --accent-2:#e8a33d;
     --radius:10px;
     --maxw:1080px;
+    --bs-body-bg:var(--bg);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -47,31 +52,39 @@
     *{animation:none !important; transition:none !important;}
   }
 
-  /* ---- nav ---- */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(13,16,23,0.82);
+  /* ---- navbar (Bootstrap) ---- */
+  .navbar{
+    background:rgba(13,16,23,0.86) !important;
     backdrop-filter:blur(12px);
     border-bottom:1px solid var(--border-soft);
+    padding-top:14px; padding-bottom:14px;
   }
-  nav.wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    height:64px;
+  .navbar-brand{font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:500; color:var(--text) !important;}
+  .navbar-brand span{color:var(--accent);}
+  .navbar .nav-link{
+    color:var(--text-muted) !important; font-size:14.5px; margin:0 4px;
+    position:relative; transition:color .15s;
   }
-  .logo{font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:500; letter-spacing:0.02em; text-decoration:none;}
-  .logo span{color:var(--accent);}
-  .navlinks{display:flex; gap:34px; font-size:14px; color:var(--text-muted);}
-  .navlinks a{text-decoration:none; position:relative; padding-bottom:3px;}
-  .navlinks a::after{
-    content:""; position:absolute; left:0; bottom:0; width:0; height:1px;
-    background:var(--accent); transition:width .2s ease;
+  .navbar .nav-link::after{
+    content:""; position:absolute; left:12px; right:12px; bottom:2px; height:1px;
+    background:var(--accent); transform:scaleX(0); transition:transform .2s ease;
   }
-  .navlinks a:hover{color:var(--text);}
-  .navlinks a:hover::after{width:100%;}
-  .navbtn{display:none; background:none; border:1px solid var(--border); color:var(--text); border-radius:8px; padding:7px 12px; font-size:13px;}
-  @media(max-width:720px){
-    .navlinks{display:none;}
-    .navbtn{display:block;}
+  .navbar .nav-link:hover{color:var(--text) !important;}
+  .navbar .nav-link:hover::after{transform:scaleX(1);}
+  .navbar-toggler{
+    border-color:var(--border) !important; padding:6px 9px;
+  }
+  .navbar-toggler:focus{box-shadow:0 0 0 3px var(--accent-soft);}
+  .navbar-toggler-icon{
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23eef0f4' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  }
+  @media(max-width:991px){
+    .navbar-collapse{
+      background:var(--bg-alt); border:1px solid var(--border-soft);
+      border-radius:10px; margin-top:14px; padding:10px 16px;
+    }
+    .navbar .nav-link{padding:10px 4px; border-bottom:1px solid var(--border-soft);}
+    .navbar .nav-link:last-child{border-bottom:none;}
   }
 
   /* ---- hero ---- */
@@ -91,8 +104,6 @@
     align-items:center;
     position:relative;
   }
-  .hero-grid > *{animation:rise .6s ease both;}
-  .hero-grid > *:nth-child(2){animation-delay:.08s;}
   .eyebrow{
     font-family:'IBM Plex Mono',monospace;
     font-size:13px; color:var(--accent);
@@ -102,6 +113,11 @@
   .eyebrow::before{
     content:""; width:7px; height:7px; border-radius:50%;
     background:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);
+    animation:pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 3px var(--accent-soft);}
+    50%{box-shadow:0 0 0 6px var(--accent-soft);}
   }
   .hero h1{
     font-size:clamp(32px, 4.4vw, 48px);
@@ -123,17 +139,17 @@
     margin:0 0 32px;
   }
   .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
-  .btn{
+  .btn-custom{
     display:inline-flex; align-items:center; gap:8px;
     padding:12px 22px; border-radius:8px;
     font-size:14px; font-weight:500; text-decoration:none;
     border:1px solid transparent;
     transition:transform .15s ease, border-color .15s, box-shadow .15s;
   }
-  .btn-primary{background:var(--accent); color:#0a0d12; box-shadow:0 0 0 0 var(--accent-soft);}
-  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 8px 24px -8px #3ecf8e55;}
-  .btn-ghost{border-color:var(--border); color:var(--text);}
-  .btn-ghost:hover{border-color:var(--text-dim); transform:translateY(-2px);}
+  .btn-primary-custom{background:var(--accent); color:#0a0d12;}
+  .btn-primary-custom:hover{transform:translateY(-2px); box-shadow:0 8px 24px -8px #3ecf8e55; color:#0a0d12;}
+  .btn-ghost-custom{border-color:var(--border); color:var(--text);}
+  .btn-ghost-custom:hover{border-color:var(--text-dim); transform:translateY(-2px); color:var(--text);}
 
   .avatar-wrap{
     width:196px; height:196px; border-radius:16px;
@@ -161,7 +177,8 @@
     display:grid; grid-template-columns:repeat(4,1fr);
     padding:26px 0;
   }
-  .stat{padding:0 22px; border-left:1px solid var(--border-soft);}
+  .stat{padding:0 22px; border-left:1px solid var(--border-soft); transition:transform .2s ease;}
+  .stat:hover{transform:translateY(-3px);}
   .stat:first-child{border-left:none; padding-left:0;}
   .stat .num{font-family:'IBM Plex Mono',monospace; font-size:25px; color:var(--accent); font-weight:600;}
   .stat .label{font-size:12.5px; color:var(--text-muted); margin-top:4px;}
@@ -186,9 +203,9 @@
     font-family:'IBM Plex Mono',monospace; font-size:12.5px;
     padding:6px 12px; border-radius:6px;
     background:var(--surface); border:1px solid var(--border); color:#c6cbd6;
-    transition:border-color .15s, color .15s;
+    transition:border-color .15s, color .15s, transform .15s;
   }
-  .tag:hover{border-color:var(--accent); color:var(--text);}
+  .tag:hover{border-color:var(--accent); color:var(--text); transform:translateY(-2px);}
   @media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
 
   /* ---- projects ---- */
@@ -221,8 +238,8 @@
   .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px;}
   .contact-info p{color:#c6cbd6; font-size:15.5px; max-width:44ch;}
   .contact-links{margin-top:24px; display:flex; flex-direction:column; gap:12px; font-size:14.5px;}
-  .contact-links a{text-decoration:none; color:var(--text); display:flex; gap:10px; align-items:center; transition:color .15s;}
-  .contact-links a:hover{color:var(--accent);}
+  .contact-links a{text-decoration:none; color:var(--text); display:flex; gap:10px; align-items:center; transition:color .15s, transform .15s;}
+  .contact-links a:hover{color:var(--accent); transform:translateX(3px);}
   form{display:flex; flex-direction:column; gap:16px;}
   .field label{display:block; font-size:13px; color:var(--text-muted); margin-bottom:6px; font-family:'IBM Plex Mono',monospace;}
   .field input, .field textarea{
@@ -246,33 +263,36 @@
 </head>
 <body>
 
-<header>
-  <nav class="wrap">
-    <a href="#" class="logo">mbayam<span>.</span>philemon</a>
-    <div class="navlinks">
-      <a href="#about">À propos</a>
-      <a href="#projets">Projets</a>
-      <a href="#contact">Contact</a>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="wrap d-flex w-100 align-items-center">
+    <a class="navbar-brand" href="#">mbayam<span>.</span>philemon</a>
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Ouvrir le menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-0 ms-auto" id="mainNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <button class="navbtn" onclick="document.getElementById('mobilenav').classList.toggle('open')">Menu</button>
-  </nav>
-  <div id="mobilenav" style="display:none;" class="wrap"></div>
-</header>
+  </div>
+</nav>
 
 <section class="hero">
   <div class="wrap hero-grid">
-    <div>
+    <div data-aos="fade-right" data-aos-duration="600">
       <p class="eyebrow">Disponible pour de nouvelles missions</p>
       <h1>Mbayam Guelbe Philémon</h1>
       <p class="role">Ingénieur informaticien · Data Analyst · Développeur Web &amp; Mobile</p>
       <p class="bio">Je transforme des données brutes en informations exploitables pour la prise de décision : nettoyage, modélisation, mesures DAX et dashboards Power BI / Excel. Diplômé en Informatique (génie logiciel) à l'ENASTIC, N'Djaména — passionné de Data Science.</p>
       <div class="cta-row">
-        <a href="#projets" class="btn btn-primary">Voir mes projets</a>
-        <a href="#contact" class="btn btn-ghost">Me contacter</a>
-        <a href="https://github.com/mbayamphilemon" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
+        <a href="#projets" class="btn-custom btn-primary-custom">Voir mes projets</a>
+        <a href="#contact" class="btn-custom btn-ghost-custom">Me contacter</a>
+        <a href="https://github.com/mbayamphilemon" target="_blank" rel="noopener" class="btn-custom btn-ghost-custom">GitHub ↗</a>
       </div>
     </div>
-    <div class="avatar-wrap">
+    <div class="avatar-wrap" data-aos="fade-left" data-aos-duration="600" data-aos-delay="100">
       <img src="https://avatars.githubusercontent.com/u/321174916?v=4" alt="Photo de Mbayam Guelbe Philémon">
     </div>
   </div>
@@ -280,22 +300,22 @@
 
 <div class="stats">
   <div class="wrap stats-row">
-    <div class="stat"><div class="num">04</div><div class="label">Projets data documentés</div></div>
-    <div class="stat"><div class="num">05</div><div class="label">Dépôts publics GitHub</div></div>
-    <div class="stat"><div class="num">6+</div><div class="label">Outils maîtrisés</div></div>
-    <div class="stat"><div class="num">N'Dj</div><div class="label">Basé à N'Djaména, Tchad</div></div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="0"><div class="num">04</div><div class="label">Projets data documentés</div></div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="80"><div class="num">05</div><div class="label">Dépôts publics GitHub</div></div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="160"><div class="num">6+</div><div class="label">Outils maîtrisés</div></div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="240"><div class="num">N'Dj</div><div class="label">Basé à N'Djaména, Tchad</div></div>
   </div>
 </div>
 
 <section id="about">
   <div class="wrap about-grid">
-    <div>
+    <div data-aos="fade-up">
       <p class="section-tag">01 — À propos</p>
       <h2 style="margin-bottom:18px;">De la donnée brute à la décision</h2>
       <p>Ingénieur informaticien de formation, je me spécialise dans l'analyse de données : je nettoie, modélise et visualise des jeux de données pour en extraire des indicateurs utiles à la prise de décision business. Je conçois aussi des applications web et mobiles, ce qui me permet de livrer des projets de bout en bout — de la base de données à l'interface finale.</p>
       <p>Chaque projet ci-dessous part d'un cahier des charges réel : nettoyage avec Power Query, modélisation en étoile, mesures DAX, puis dashboards interactifs pensés pour une direction ou un service métier.</p>
     </div>
-    <div class="skill-groups">
+    <div class="skill-groups" data-aos="fade-up" data-aos-delay="120">
       <div>
         <div class="skill-group-label">Data & BI</div>
         <div class="tags">
@@ -329,14 +349,14 @@
 
 <section id="projets" style="background:var(--bg-alt); border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft);">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-aos="fade-up">
       <p class="section-tag">02 — Projets</p>
       <h2>Projets récents</h2>
     </div>
 
     <!-- Project 1 -->
     <div class="project">
-      <div class="project-head">
+      <div class="project-head" data-aos="fade-up">
         <p class="project-index">Projet 01</p>
         <h3 class="project-title">Analyse des ventes — Power BI</h3>
         <p class="project-desc">Dashboard décisionnel en 4 pages pour une entreprise de distribution : chiffre d'affaires, rentabilité, performance des commerciaux et comportement des segments clients. Modèle en étoile, mesures DAX et nettoyage Power Query.</p>
@@ -344,7 +364,7 @@
           <span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span><span class="tag">Excel</span>
         </div>
       </div>
-      <div class="gallery">
+      <div class="gallery" data-aos="fade-up" data-aos-delay="100">
         <a class="feature" href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/performance%20commerciale.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/performance%20commerciale.jpg" alt="Performance commerciale — dashboard Power BI"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20par%20produit.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20par%20produit.jpg" alt="Analyse par produit"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20des%20commerciaux.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20des%20commerciaux.jpg" alt="Analyse des commerciaux"></a>
@@ -353,7 +373,7 @@
 
     <!-- Project 2 -->
     <div class="project">
-      <div class="project-head">
+      <div class="project-head" data-aos="fade-up">
         <p class="project-index">Projet 02</p>
         <h3 class="project-title">HR Analytics — Power BI</h3>
         <p class="project-desc">Dashboard RH interactif sur une base synthétique de 2 500 employés : structure des effectifs, turnover, rémunération et écarts salariaux. Modélisation avec dimension temporelle et mesures DAX dédiées.</p>
@@ -361,7 +381,7 @@
           <span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span>
         </div>
       </div>
-      <div class="gallery">
+      <div class="gallery" data-aos="fade-up" data-aos-delay="100">
         <a class="feature" href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/vue%20d%27ensemble%20RH.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/vue%20d%27ensemble%20RH.png" alt="Vue d'ensemble RH"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/turnover.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/turnover.png" alt="Analyse du turnover"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/renumeration.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/renumeration.png" alt="Analyse de la rémunération"></a>
@@ -370,7 +390,7 @@
 
     <!-- Project 3 -->
     <div class="project">
-      <div class="project-head">
+      <div class="project-head" data-aos="fade-up">
         <p class="project-index">Projet 03</p>
         <h3 class="project-title">Analyse commerciale — Excel</h3>
         <p class="project-desc">Transformation de données commerciales brutes en informations décisionnelles : nettoyage, tableaux croisés dynamiques, KPI (marge, panier moyen, taux de marge) et dashboard interactif construit entièrement dans Excel.</p>
@@ -378,14 +398,14 @@
           <span class="tag">Excel</span><span class="tag">Power Query</span><span class="tag">TCD</span>
         </div>
       </div>
-      <div class="gallery single">
+      <div class="gallery single" data-aos="fade-up" data-aos-delay="100">
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-Excel---Analyses-ventes-/main/DASHBOARD.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-Excel---Analyses-ventes-/main/DASHBOARD.png" alt="Dashboard Excel — analyse des ventes"></a>
       </div>
     </div>
 
     <!-- Project 4 -->
     <div class="project">
-      <div class="project-head">
+      <div class="project-head" data-aos="fade-up">
         <p class="project-index">Projet 04</p>
         <h3 class="project-title">Exploitation minière au Mali — SQL &amp; PostgreSQL</h3>
         <p class="project-desc">Exploration d'une base relationnelle représentant des sites miniers : production, ressources humaines, équipements et exportations. Jointures, agrégations et classements pour répondre à des questions métier concrètes.</p>
@@ -403,7 +423,7 @@
 
 <section id="contact">
   <div class="wrap contact-grid">
-    <div class="contact-info">
+    <div class="contact-info" data-aos="fade-right">
       <p class="section-tag">03 — Contact</p>
       <h2 style="margin-bottom:18px;">Travaillons ensemble</h2>
       <p>Disponible pour des missions de data analyse, de reporting Power BI/Excel ou de développement web &amp; mobile. Le formulaire ouvre directement votre messagerie — répondez-y comme à un e-mail classique.</p>
@@ -413,7 +433,7 @@
         <a href="https://github.com/mbayamphilemon" target="_blank" rel="noopener">↗ github.com/mbayamphilemon</a>
       </div>
     </div>
-    <form id="contactForm" onsubmit="return sendMail(event)">
+    <form id="contactForm" onsubmit="return sendMail(event)" data-aos="fade-left">
       <div class="field">
         <label for="name">Nom</label>
         <input type="text" id="name" name="name" placeholder="Votre nom" required>
@@ -427,7 +447,7 @@
         <textarea id="message" name="message" placeholder="Décrivez votre besoin ou votre offre..." required></textarea>
       </div>
       <p class="form-error" id="formError">Merci de remplir tous les champs avec une adresse e-mail valide.</p>
-      <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Envoyer le message</button>
+      <button type="submit" class="btn-custom btn-primary-custom" style="align-self:flex-start; border:none; cursor:pointer;">Envoyer le message</button>
       <p class="form-note">Ouvre votre application de messagerie par défaut (mailto:).</p>
     </form>
   </div>
@@ -438,8 +458,23 @@
   <span>N'Djaména, Tchad</span>
 </footer>
 
+<!-- Bootstrap JS (gère le menu mobile via data-bs-toggle, fiable sur Android) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AOS (animations au scroll) -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
+  AOS.init({ once: true, duration: 600, easing: 'ease-out' });
+
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Ferme le menu mobile après le clic sur un lien (comportement attendu sur Android/iOS)
+  document.querySelectorAll('#mainNav .nav-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      var collapseEl = document.getElementById('mainNav');
+      var instance = bootstrap.Collapse.getOrCreateInstance(collapseEl);
+      instance.hide();
+    });
+  });
 
   function sendMail(e){
     e.preventDefault();
@@ -455,7 +490,7 @@
     }
     errorEl.style.display = 'none';
 
-    const to = '';
+    const to = 'mbayamphilemon@gmail.com';
     const subject = encodeURIComponent('Contact portfolio — ' + name);
     const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
     window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
