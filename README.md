@@ -364,13 +364,13 @@
           <span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span><span class="tag">Excel</span>
         </div>
       </div>
+      
       <div class="gallery" data-aos="fade-up" data-aos-delay="100">
         <a class="feature" href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/performance%20commerciale.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/performance%20commerciale.jpg" alt="Performance commerciale — dashboard Power BI"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20par%20produit.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20par%20produit.jpg" alt="Analyse par produit"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20des%20commerciaux.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20des%20commerciaux.jpg" alt="Analyse des commerciaux"></a>
 
-          <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20des%20clients%20et%20paiement.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20des%20clients%20et%20paiement.jpg" alt="Analyse des clients et paiement"></a>
-
+    
 
         
       </div>
@@ -391,8 +391,7 @@
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/turnover.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/turnover.png" alt="Analyse du turnover"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/renumeration.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/renumeration.png" alt="Analyse de la rémunération"></a>
         
-       <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/analyse%20employes.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/analyse%20employes.png" alt="Analyse employés"></a>
-
+  
         
       </div>
     </div>
