@@ -415,7 +415,7 @@
         <div class="project-links">
           <a href="https://mbayamphilemon.github.io/Projet-SQL-Exploitation-Minier/" target="_blank" rel="noopener">Démo en ligne ↗</a>
 
-            <a href="https://mbayamphilemon.github.io/mbayamphilemon/" target="_blank" rel="noopener">Mon CV ↗</a>
+            <a href="https://mbayamphilemon.github.io/mbayamphilemon/CV.png" target="_blank" rel="noopener">Mon CV ↗</a>
           
         </div>
       </div>
