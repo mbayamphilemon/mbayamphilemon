@@ -459,7 +459,7 @@ ORDER BY production DESC;
     }
     errorEl.style.display = 'none';
 
-    const to = 'VOTRE-EMAIL@exemple.com';
+    const to = 'mbayamphilemon@gmail.com';
     const subject = encodeURIComponent('Contact portfolio — ' + name);
     const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
     window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
