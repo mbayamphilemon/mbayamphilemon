@@ -413,7 +413,7 @@ ORDER BY production DESC;
       <h2 style="margin-bottom:18px;">Travaillons ensemble</h2>
       <p>Disponible pour des missions de data analyse, de reporting Power BI/Excel ou de développement web &amp; mobile. Le formulaire ouvre directement votre messagerie — répondez-y comme à un e-mail classique.</p>
       <div class="contact-links">
-        <a href="mailto:VOTRE-EMAIL@exemple.com">✉ VOTRE-EMAIL@exemple.com</a>
+        <a href="mailto:mbayamphilemon@gmail.com">✉ mbayamphilemon@gmail.com</a>
         <a href="https://github.com/mbayamphilemon" target="_blank" rel="noopener">↗ github.com/mbayamphilemon</a>
       </div>
     </div>
