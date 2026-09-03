@@ -1,4 +1,3 @@
- <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -456,7 +455,7 @@
     }
     errorEl.style.display = 'none';
 
-    const to = 'mbayamphilemon@gmail.com';
+    const to = '';
     const subject = encodeURIComponent('Contact portfolio — ' + name);
     const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
     window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
