@@ -302,8 +302,8 @@
   <div class="wrap stats-row">
     <div class="stat" data-aos="fade-up" data-aos-delay="0"><div class="num">04</div><div class="label">Projets data documentés</div></div>
     <div class="stat" data-aos="fade-up" data-aos-delay="80"><div class="num">05</div><div class="label">Dépôts publics GitHub</div></div>
-    <div class="stat" data-aos="fade-up" data-aos-delay="160"><div class="num">6+</div><div class="label">Outils maîtrisés</div></div>
-    <div class="stat" data-aos="fade-up" data-aos-delay="240"><div class="num">N'Dj</div><div class="label">Basé à N'Djaména, Tchad</div></div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="160"><div class="num">20+</div><div class="label">Outils data et développements maîtrisés</div></div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="240"><div class="num">N'Djaména</div><div class="label">Basé à N'Djaména, Tchad</div></div>
   </div>
 </div>
 
@@ -368,6 +368,11 @@
         <a class="feature" href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/performance%20commerciale.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/performance%20commerciale.jpg" alt="Performance commerciale — dashboard Power BI"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20par%20produit.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20par%20produit.jpg" alt="Analyse par produit"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20des%20commerciaux.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20des%20commerciaux.jpg" alt="Analyse des commerciaux"></a>
+
+          <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20des%20clients%20et%20paiement.jpg" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-Analyse-vente/main/analyse%20des%20clients%20et%20paiement.jpg" alt="Analyse des clients et paiement"></a>
+
+
+        
       </div>
     </div>
 
@@ -385,6 +390,10 @@
         <a class="feature" href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/vue%20d%27ensemble%20RH.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/vue%20d%27ensemble%20RH.png" alt="Vue d'ensemble RH"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/turnover.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/turnover.png" alt="Analyse du turnover"></a>
         <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/renumeration.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/renumeration.png" alt="Analyse de la rémunération"></a>
+        
+       <a href="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/analyse%20employes.png" target="_blank" rel="noopener"><img loading="lazy" src="https://raw.githubusercontent.com/mbayamphilemon/Projet-PowerBI-RH/main/analyse%20employes.png" alt="Analyse employés"></a>
+
+        
       </div>
     </div>
 
